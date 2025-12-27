@@ -1,0 +1,8 @@
+{
+  "name": "Meu Ônibus",
+  "description": "Uma plataforma completa para rastreamento em tempo real de ônibus. Empresas podem definir rotas e gerenciar incidentes, enquanto passageiros acompanham a localização exata, recebem avisos de desvios e acessam rotas via QR Code.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ]
+}

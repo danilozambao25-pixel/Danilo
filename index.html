@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Meu Ônibus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://esm.sh/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+      :root {
+        --app-height: 100%;
+      }
+      html, body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        position: fixed;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #020617;
+        overscroll-behavior-y: none;
+      }
+      #root {
+        height: 100dvh;
+        width: 100vw;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      /* Ajustes para o Leaflet no modo escuro */
+      .leaflet-container {
+        background: #020617 !important;
+        border-radius: inherit;
+      }
+      .bus-marker-icon {
+        background: none !important;
+        border: none !important;
+      }
+      .leaflet-control-zoom {
+        border: none !important;
+        margin: 10px !important;
+      }
+      .leaflet-control-zoom-in, .leaflet-control-zoom-out {
+        background-color: #0f172a !important;
+        color: #94a3b8 !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+        border-radius: 8px !important;
+        margin-bottom: 2px !important;
+      }
+      .leaflet-control-attribution {
+        background: none !important;
+        color: #475569 !important;
+        font-size: 7px !important;
+        text-transform: uppercase;
+      }
+
+      /* Animação Suave do Ônibus Estilo Uber */
+      @keyframes bus-float {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-2px) scale(1.02); }
+      }
+      .bus-uber-style {
+        animation: bus-float 3s ease-in-out infinite;
+        filter: drop-shadow(0 10px 15px rgba(0, 112, 243, 0.4));
+      }
+
+      /* Scrollbar Customizado */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+
+      /* Scanner Animation */
+      @keyframes scan-line {
+        0% { top: 0%; }
+        100% { top: 100%; }
+      }
+      .scanner-line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #3b82f6;
+        box-shadow: 0 0 15px #3b82f6;
+        animation: scan-line 2s linear infinite;
+        z-index: 10;
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "leaflet": "https://esm.sh/leaflet@1.9.4",
+        "qr-scanner": "https://esm.sh/qr-scanner",
+        "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+      }
+    }
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-900">
+    <div id="root"></div>
+  </body>
+</html>
